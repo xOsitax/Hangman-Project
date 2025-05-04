@@ -21,6 +21,7 @@ function RandomWord() {
         onChange={(e) => setGuess(e.target.value)}
         maxLength={1}
       />
+
       {/* Additional game logic here */}
     </div>
   );
