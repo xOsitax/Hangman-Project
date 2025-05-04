@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Hangman() {
+function RandomWord() {
   const [word, setWord] = useState("");
   const [guess, setGuess] = useState("");
 
@@ -26,4 +26,4 @@ function Hangman() {
   );
 }
 
-export default Hangman;
+export default RandomWord;
