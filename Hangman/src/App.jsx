@@ -1,13 +1,13 @@
 import React from "react";
+import HangmanGameLogic from "./components/HangmanGameLogic";
+import Header from "./components/Header";
 
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="p-10">
       <Header />
-      <main className="flex-1"></main>
-      <Footer />
+      <h1 className="text-2xl font-bold"></h1>
+      <HangmanGameLogic />
     </div>
   );
 }
