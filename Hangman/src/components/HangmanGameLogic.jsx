@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import VirtualKeyboard from "./VirtualKeyboard";
+import './HangmanGameLogic.css';
 
 const HangmanGameLogic = () => {
   const [word, setWord] = useState("");
@@ -92,11 +94,12 @@ const HangmanGameLogic = () => {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Hangman Game</h1>
-      <p className="mb-2">Word to Guess: {displayWord}</p>
-      <p className="mb-2">Remaining Attempts: {remainingGuesses}</p>
-      <p className="mb-2">
+    <div className="game-container">
+    <h1 className="game-title">Hangman Game</h1>
+      <div className="gamecontent">
+      <p className="worddisplay">Word to Guess: {displayWord}</p>
+      <p className="remainingattempts">Remaining Attempts: {remainingGuesses}</p>
+      <p className="gamestatus">
         Status:{" "}
         {gameStatus === "playing"
           ? "Keep Trying"
@@ -104,30 +107,22 @@ const HangmanGameLogic = () => {
           ? "You Won!"
           : "Game Over"}
       </p>
-      <p className="mb-4">Wrong Letters: {wrongLetters.join(", ")}</p>
+      <p className="wrongletters">Wrong Letters: {wrongLetters.join(", ")}</p>
 
       {gameStatus === "playing" && (
-        <input
-          type="text"
-          maxLength="1"
-          onChange={(e) => {
-            handleGuess(e.target.value);
-            e.target.value = "";
-          }}
-          placeholder="Guess a letter"
-          className="border p-2 mb-4 w-full"
-        />
-      )}
+          <VirtualKeyboard onKeyPress={handleGuess} />
+        )}
 
       {gameStatus !== "playing" && (
         <button
           onClick={resetGame}
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="play-button"
         >
-          Play Again
+          Play 
         </button>
       )}
     </div>
+  </div>
   );
 };
 
