@@ -6,6 +6,7 @@ const HangmanGameLogic = () => {
   const [wrongLetters, setWrongLetters] = useState([]);
   const [remainingGuesses, setRemainingGuesses] = useState(8);
   const [gameStatus, setGameStatus] = useState("playing"); // 'playing', 'won', 'lost'
+  const [score, setScore] = useState(0);
 
   // Fetch a word from API
   const fetchRandomWord = async () => {
@@ -23,12 +24,18 @@ const HangmanGameLogic = () => {
 
   // Initialize the game
   useEffect(() => {
+    const savedScore = localStorage.getItem("hangmanScore");
+    if (savedScore) {
+      setScore(parseInt(savedScore, 10));
+    }
+
     const initializeGame = async () => {
       const randomWord = await fetchRandomWord();
       if (randomWord) {
         setWord(randomWord.toUpperCase());
       }
     };
+
     initializeGame();
   }, []);
 
@@ -74,6 +81,9 @@ const HangmanGameLogic = () => {
 
     if (hasWon) {
       setGameStatus("won");
+      const newScore = score + 1;
+      setScore(newScore);
+      localStorage.setItem("hangmanScore", newScore);
     } else if (remainingGuesses <= 0) {
       setGameStatus("lost");
     }
@@ -94,6 +104,7 @@ const HangmanGameLogic = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Hangman Game</h1>
+      <p className="mb-2 font-semibold">Score: {score}</p>
       <p className="mb-2">Word to Guess: {displayWord}</p>
       <p className="mb-2">Remaining Attempts: {remainingGuesses}</p>
       <p className="mb-2">
