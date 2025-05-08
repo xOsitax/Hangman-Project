@@ -52,6 +52,7 @@ return (
   />
   
   <button onClick={handleRegister}>Register</button>
+  <button onClick={() => navigate('/')}>Back</button>
   </div>
  );
 }
