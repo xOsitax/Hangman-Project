@@ -82,9 +82,10 @@ body {
     transition: background-color 0.3s ease;
   }
   
-  .play-again-button:hover {
+  .play-button:hover {
     background-color: #2563eb;
   }
+
   @keyframes bounce {
     0% {
         transform: translateY(0);

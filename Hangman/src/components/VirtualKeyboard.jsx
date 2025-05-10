@@ -3,8 +3,8 @@ import './VirtualKeyboard.css';
 
 const VirtualKeyboard = ({ onKeyPress }) => {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-  const firstRow = alphabet.slice(0, 15);  // A to O
-  const secondRow = alphabet.slice(15);   // P to Z
+  const firstRow = alphabet.slice(0, 15);  
+  const secondRow = alphabet.slice(15);  
 
 
   const handleClick = (letter) => {
