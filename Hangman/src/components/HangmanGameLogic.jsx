@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import VirtualKeyboard from "./VirtualKeyboard";
 import { fetchRandomWord } from "./Api";
 import "./HangmanGameLogic.css";
+import "./Api.jsx";
 
 // Hangman images
 import hangman0 from "../assets/images/hangman0.svg";
