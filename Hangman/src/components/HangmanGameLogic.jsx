@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import VirtualKeyboard from "./VirtualKeyboard";
-import { fetchRandomWord } from "./Api";
 import "./HangmanGameLogic.css";
-import "./Api.jsx";
 
-// Hangman images
+// Import hangman images
 import hangman0 from "../assets/images/hangman0.svg";
 import hangman1 from "../assets/images/hangman1.svg";
 import hangman2 from "../assets/images/hangman2.svg";
@@ -23,7 +21,6 @@ const hangmanImages = [
   hangman5,
   hangman6,
   hangman7,
-  hangman8,
 ];
 
 const HangmanGameLogic = () => {
@@ -32,20 +29,37 @@ const HangmanGameLogic = () => {
   const [wrongLetters, setWrongLetters] = useState([]);
   const [remainingGuesses, setRemainingGuesses] = useState(8);
   const [gameStatus, setGameStatus] = useState("playing");
+  const [loading, setLoading] = useState(true);
+
+  const fetchRandomWord = async () => {
+    try {
+      const response = await fetch(
+        "https://random-word-api.vercel.app/api?words=1"
+      );
+      const data = await response.json();
+      return data[0];
+    } catch (error) {
+      console.error("Error fetching word:", error);
+      return null;
+    }
+  };
+
+  const initializeGame = async () => {
+    setLoading(true);
+    const randomWord = await fetchRandomWord();
+    if (randomWord) {
+      setWord(randomWord.toUpperCase());
+      setCorrectLetters([]);
+      setWrongLetters([]);
+      setRemainingGuesses(8);
+      setGameStatus("playing");
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
-    const initializeGame = async () => {
-      const randomWord = await fetchRandomWord();
-      if (randomWord) {
-        setWord(randomWord.toUpperCase());
-      }
-    };
     initializeGame();
   }, []);
-
-  const displayWord = word
-    .split("")
-    .map((letter) => (correctLetters.includes(letter) ? letter : "_"))
-    .join(" ");
 
   const handleGuess = (letter) => {
     if (
@@ -54,14 +68,12 @@ const HangmanGameLogic = () => {
       letter.length !== 1 ||
       !/^[a-zA-Z]$/.test(letter)
     ) {
-      alert("Please enter a single letter (A-Z only).");
       return;
     }
 
     letter = letter.toUpperCase();
 
     if (correctLetters.includes(letter) || wrongLetters.includes(letter)) {
-      alert("You already guessed that letter!");
       return;
     }
 
@@ -69,11 +81,13 @@ const HangmanGameLogic = () => {
       setCorrectLetters((prev) => [...prev, letter]);
     } else {
       setWrongLetters((prev) => [...prev, letter]);
-      setRemainingGuesses((prev) => prev - 1);
+      setRemainingGuesses((prev) => Math.max(prev - 1, 0));
     }
   };
 
   useEffect(() => {
+    if (loading || word === "") return;
+
     const wordLetters = [...new Set(word.split(""))];
     const hasWon = wordLetters.every((letter) =>
       correctLetters.includes(letter)
@@ -81,21 +95,19 @@ const HangmanGameLogic = () => {
 
     if (hasWon) {
       setGameStatus("won");
-    } else if (remainingGuesses <= 0) {
+    } else if (remainingGuesses === 0) {
       setGameStatus("lost");
     }
-  }, [correctLetters, remainingGuesses, word]);
+  }, [correctLetters, remainingGuesses, word, loading]);
 
   const resetGame = async () => {
-    setCorrectLetters([]);
-    setWrongLetters([]);
-    setRemainingGuesses(8);
-    setGameStatus("playing");
-    const randomWord = await fetchRandomWord();
-    if (randomWord) {
-      setWord(randomWord.toUpperCase());
-    }
+    await initializeGame();
   };
+
+  const displayWord = word
+    .split("")
+    .map((letter) => (correctLetters.includes(letter) ? letter : "_"))
+    .join(" ");
 
   const getHangmanPartClass = (index) => {
     switch (index) {
@@ -115,12 +127,12 @@ const HangmanGameLogic = () => {
         return "left-leg";
       case 7:
         return "right-leg";
-      case 8:
-        return "hat";
       default:
         return "";
     }
   };
+
+  if (loading) return <div className="loading">Loading word...</div>;
 
   return (
     <div className="game-container">
@@ -138,7 +150,7 @@ const HangmanGameLogic = () => {
               ? "Keep Trying"
               : gameStatus === "won"
               ? "You Won!"
-              : "Game Over"}
+              : `Game Over — the word was ${word}`}
           </p>
           <p className="wrongletters">
             Wrong Letters: {wrongLetters.join(", ")}
@@ -162,7 +174,7 @@ const HangmanGameLogic = () => {
               src={img}
               alt={`Hangman part ${index}`}
               className={`hangman-step ${
-                index <= 8 - remainingGuesses ? "visible" : "hidden"
+                index < 8 - remainingGuesses ? "visible" : "hidden"
               } ${getHangmanPartClass(index)}`}
             />
           ))}

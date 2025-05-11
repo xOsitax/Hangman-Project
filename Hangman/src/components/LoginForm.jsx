@@ -1,7 +1,9 @@
 import { useState } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import HangmanGameLogic from "./HangmanGameLogic";
+import "../styles/HomePage.css";
+import Rope from "../images/Rope.png";
+import Stickman from "../images/Stickman.png";
 
 function LoginForm() {
   const [name, setName] = useState("");
@@ -25,28 +27,37 @@ function LoginForm() {
       setPassword("");
       return;
     }
-    navigate("/gamepage");
+    navigate("/game");
   }
 
   return (
-    <div>
-      <h1>Log in</h1>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Name"
-      />
-
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-      />
-
-      <button onClick={handleLogin}>Log in</button>
-      <button onClick={() => navigate("/")}>Back</button>
+    <div class="Home-container">
+      <div class="left-content">
+        <p>
+          <span className="title-the">The</span> <br />
+          <span className="title-hangman">Hangman</span>
+        </p>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Name"
+        />
+        <br />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
+        <br />
+        <button onClick={handleLogin}>Log in</button>
+        <button onClick={() => navigate("/")}>Back</button>
+      </div>
+      <div class="right-content">
+        <img src={Rope} alt="Rope image" className="image1" />
+        <img src={Stickman} alt="Stickman image" className="image2" />
+      </div>
     </div>
   );
 }
