@@ -157,13 +157,13 @@ body {
 .hangman-step.head {
   top: 80px;
   left: 60%;
-  width: 90px;
+  width: 80px;
   transform: translateX(-50%);
   z-index: 2;
 }
 .hangman-step.eyes {
   position: absolute;
-  top: 120px;
+  top: 130px;
   left: 60%;
   width: 50px;
   transform: translateX(-50%);
@@ -175,7 +175,7 @@ body {
   margin: 0 5px;
 }
 .hangman-step.body {
-  top: 140px;
+  top: 165px;
   left: 60%;
   width: 90px;
   transform: translateX(-50%);
@@ -183,29 +183,46 @@ body {
 }
 
 .hangman-step.left-arm {
-  top: 130px;
+  top: 170px;
   left: 45%;
-  width: 35px;
+  width: 75px;
   transform: translateX(-60%);
 }
 
 .hangman-step.right-arm {
-  top: 130px;
+  top: 160px;
   left: 75%;
-  width: 35px;
+  width: 75px;
   transform: translateX(-40%);
 }
 
 .hangman-step.left-leg {
-  top: 170px;
+  top: 240px;
   left: 45%;
-  width: 35px;
+  width: 45px;
   transform: translateX(-20%);
 }
 
 .hangman-step.right-leg {
-  top: 170px;
+  top: 240px;
   left: 75%;
-  width: 35px;
-  transform: translateX(-95%);
+  width: 55px;
+  transform: translateX(-50%);
+}
+.logout-container {
+  margin-top: 1rem;
+  text-align: center; /* Aligns the button to the left */
+}
+
+.logout-button {
+  padding: 0.5rem 1rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #c0392b;
 }

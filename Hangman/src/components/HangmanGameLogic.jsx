@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import VirtualKeyboard from "./VirtualKeyboard";
 import "./HangmanGameLogic.css";
-
+import { useNavigate } from "react-router-dom";
 // Import hangman images
 import hangman0 from "../assets/images/hangman0.svg";
 import hangman1 from "../assets/images/hangman1.svg";
@@ -104,6 +104,14 @@ const HangmanGameLogic = () => {
     await initializeGame();
   };
 
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+
+    navigate("/login");
+  };
+
   const displayWord = word
     .split("")
     .map((letter) => (correctLetters.includes(letter) ? letter : "_"))
@@ -165,6 +173,13 @@ const HangmanGameLogic = () => {
               Play Again
             </button>
           )}
+
+          {/* Logout Button */}
+          <div className="logout-container">
+            <button onClick={handleLogout} className="logout-button">
+              Logout
+            </button>
+          </div>
         </div>
 
         <div className="game-right hangman-images">
