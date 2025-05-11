@@ -5,20 +5,22 @@ function RandomWord() {
   const [guess, setGuess] = useState("");
 
   // this part fetches word and discards ones over 8 characters
-  const fetchWord = () => {
-    fetch("https://random-word-api.herokuapp.com/word?number=1")
-      .then((response) => response.json())
-      .then((data) => {
-        const fetchedWord = data[0];
-        if (fetchedWord.length <= 8) {
-          setWord(fetchedWord);
-        } else {
-          fetchWord();
-        }
-      })
-      .catch((error) => console.error("Error fetching word:", error));
-  };
+  const fetchWord = async () => {
+    try {
+      let fetchedWord = "";
+      do {
+        const response = await fetch(
+          "https://random-word-api.herokuapp.com/word?number=1"
+        );
+        const data = await response.json();
+        fetchedWord = data[0];
+      } while (fetchedWord.length > 8);
 
+      setWord(fetchedWord);
+    } catch (error) {
+      console.error("Error fetching word:", error);
+    }
+  };
   useEffect(() => {
     fetchWord();
   }, []);
@@ -30,11 +32,14 @@ function RandomWord() {
       <input
         type="text"
         value={guess}
-        onChange={(e) => setGuess(e.target.value)}
+        onChange={(e) => {
+          const val = e.target.value.toUpperCase();
+          if (/^[A-Z]?$/.test(val)) {
+            setGuess(val);
+          }
+        }}
         maxLength={1}
       />
-
-      {/* Additional game logic here */}
     </div>
   );
 }
