@@ -1,31 +1,28 @@
 {
-  "name": "hangman-project",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "hangman-game",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.5.3"
   },
   "devDependencies": {
-    "vite": "^6.3.5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xOsitax/Hangman-Project.git"
-  },
-  "bugs": {
-    "url": "https://github.com/xOsitax/Hangman-Project/issues"
-  },
-  "homepage": "https://github.com/xOsitax/Hangman-Project#readme"
+    "@eslint/js": "^9.22.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.22.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "vite": "^6.3.4"
+  }
 }
-
