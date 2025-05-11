@@ -22,6 +22,7 @@ const hangmanImages = [
   hangman5,
   hangman6,
   hangman7,
+  hangman8,
 ];
 
 const HangmanGameLogic = () => {
@@ -113,6 +114,8 @@ const HangmanGameLogic = () => {
         return "left-leg";
       case 7:
         return "right-leg";
+      case 8:
+        return "hat";
       default:
         return "";
     }

@@ -209,3 +209,9 @@ body {
   width: 35px;
   transform: translateX(-95%);
 }
+.hangman-step.hat {
+  top: 170px;
+  left: 75%;
+  width: 35px;
+  transform: translateX(-95%);
+}
