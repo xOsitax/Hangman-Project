@@ -55,8 +55,10 @@ function RegisterForm() {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
-        <button onClick={handleRegister}>Create Account</button>
-        <button onClick={() => navigate("/")}>Back</button>
+        <div class="buttons">
+          <button onClick={handleRegister}>Create Account</button>
+          <button onClick={() => navigate("/")}>Back</button>
+        </div>
       </div>
       <div class="right-content">
         <img src={Rope} alt="Rope image" className="image1" />

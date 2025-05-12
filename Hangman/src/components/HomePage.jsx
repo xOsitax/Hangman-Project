@@ -14,10 +14,10 @@ function HomePage() {
         <span className="title-the">The</span> <br />
         <span className="title-hangman">Hangman</span>
       </p>
-  
-      <button onClick={() => navigate('/login')}>Log in</button>
-      <button onClick={() => navigate('/register')}>Register</button>
-
+      <div class="buttons">
+        <button onClick={() => navigate('/login')}>Log in</button>
+        <button onClick={() => navigate('/register')}>Register</button> 
+      </div>
     </div>
     <div class="right-content">
       <img src={Rope} alt="Rope image" className="image1" />
