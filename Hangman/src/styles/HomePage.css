@@ -1,5 +1,5 @@
 body{
-    background-color: white;
+    background-color: yellowgreen;
     margin: 0;
 }
 .Home-container {
@@ -9,13 +9,11 @@ body{
   padding: 50px;
   height: 100vh;
   gap: 60px;
-  background-color:white;
   box-sizing: border-box;
 }
 
 .left-content {
   text-align: left;
-  background-color:white ;
   padding: 30px 40px;
   border-radius: 12px;
   font-family: 'roboto', sans-serif;
@@ -43,7 +41,7 @@ body{
     font-family: "orbitron", sans-serif;
 }
 .title-hangman{
-    color:#E91E63;
+    color:#e63946;
     font-family: "orbitron", sans-serif;;
 }
 .left-content button {
@@ -57,7 +55,6 @@ body{
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background-color: white;
   border:4px solid black
 }
 .buttons{
@@ -80,24 +77,20 @@ body{
   height: 400px;
   margin-left: 20px;
   display: inline-block; 
-  animation: swing 8s ease-in-out infinite; 
+  animation: swing 6s linear infinite; 
   transform-origin: center center; 
 }
 @keyframes swing {
   0% {
-    transform: rotate(0deg); 
+    transform: rotate(10deg); 
   }
-  25% {
-    transform: rotate(15deg); 
-  }
+  
   50% {
-    transform: rotate(0deg);
+    transform: rotate(-10deg);
   }
-  75% {
-    transform: rotate(-15deg); 
-  }
+  
   100% {
-    transform: rotate(0deg); 
+    transform: rotate(10deg); 
   }
 }
 .image1 {
