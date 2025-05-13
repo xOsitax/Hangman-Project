@@ -267,7 +267,7 @@ body {
 }
 @media (max-width: 768px) {
   body{
-    font-size: 12px;
+    font-size: 14px;
     padding: 10px;
     
   }
@@ -284,11 +284,11 @@ body {
     
   }
   .worddisplay{
-    font-size: 16px;
+    font-size: 12px;
   }
   .game-left{
     width: 100%;
-    padding: 5px 0;
+    padding: 4px 0;
     text-align: center;
     order:1;
   
@@ -320,5 +320,8 @@ body {
 
   .hangman-step.right-leg {
     top: 220px; 
+  }
+  .logout-container {
+  margin-top: 1rem;
   }
 }
