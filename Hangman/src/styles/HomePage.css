@@ -1,6 +1,6 @@
-body{
-    background-color: white;
-    margin: 0;
+body {
+  background-color: white;
+  margin: 0;
 }
 .Home-container {
   display: flex;
@@ -9,19 +9,18 @@ body{
   padding: 50px;
   height: 100vh;
   gap: 60px;
-  background-color:white;
+  background-color: white;
   box-sizing: border-box;
 }
 
 .left-content {
   text-align: left;
-  background-color:white ;
+  background-color: white;
   padding: 30px 40px;
   border-radius: 12px;
-  font-family: 'roboto', sans-serif;
+  font-family: "roboto", sans-serif;
   line-height: 1.5;
-  margin-right: 30px;
-  
+  margin-right: 31px;
 }
 
 .left-content p {
@@ -30,18 +29,15 @@ body{
   margin-bottom: 30px;
   color: #222;
   font-weight: bolder;
-  text-shadow: 
-    3px 3px 0px black, 
-    -3px -3px 0px black, 
-    3px -3px 0px black, 
+  text-shadow: 3px 3px 0px black, -3px -3px 0px black, 3px -3px 0px black,
     -3px 3px 0px black;
 }
 
-.title-the{
-    color: #3F51B5;
+.title-the {
+  color: #3f51b5;
 }
-.title-hangman{
-    color:#E91E63;
+.title-hangman {
+  color: #e91e63;
 }
 .left-content button {
   display: block;
@@ -54,11 +50,11 @@ body{
   cursor: pointer;
   transition: all 0.3s ease;
   background-color: white;
-  border:4px solid black
+  border: 4px solid black;
 }
 
 .left-content button:hover {
-  background-color: #9D27B0;
+  background-color: #9d27b0;
   color: bisque;
   transform: scale(0.98);
 }
@@ -68,25 +64,25 @@ body{
   width: 120px;
   height: 350px;
   margin-left: 20px;
-  display: inline-block; 
-  animation: swing 8s ease-in-out infinite; 
-  transform-origin: center center; 
+  display: inline-block;
+  animation: swing 8s ease-in-out infinite;
+  transform-origin: center center;
 }
 @keyframes swing {
   0% {
-    transform: rotate(0deg); 
+    transform: rotate(0deg);
   }
   25% {
-    transform: rotate(15deg); 
+    transform: rotate(15deg);
   }
   50% {
     transform: rotate(0deg);
   }
   75% {
-    transform: rotate(-15deg); 
+    transform: rotate(-15deg);
   }
   100% {
-    transform: rotate(0deg); 
+    transform: rotate(0deg);
   }
 }
 .image1 {
@@ -106,12 +102,11 @@ body{
   z-index: 2;
 }
 @media (max-width: 768px) {
- 
   .Home-container {
     padding: 20px;
     gap: 30px;
   }
- .left-content {
+  .left-content {
     padding: 20px;
     margin-right: 20px;
     text-align: center;
@@ -137,11 +132,10 @@ body{
   }
 }
 @media (max-width: 480px) {
-
-    .Home-container {
+  .Home-container {
     padding: 15px;
     gap: 15px;
-    flex-direction: column; 
+    flex-direction: column;
   }
   .left-content {
     padding: 15px;
@@ -150,7 +144,7 @@ body{
   }
 
   .left-content p {
-    font-size: 2.5rem; 
+    font-size: 2.5rem;
   }
   .left-content button {
     font-size: 0.9em;
