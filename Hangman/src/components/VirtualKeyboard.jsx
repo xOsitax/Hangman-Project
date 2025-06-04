@@ -1,6 +1,5 @@
 import React from "react";
-import './VirtualKeyboard.css';
-
+import "./VirtualKeyboard.css";
 const VirtualKeyboard = ({ onKeyPress }) => {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
   const firstRow = alphabet.slice(0, 15);  

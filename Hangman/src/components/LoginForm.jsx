@@ -41,7 +41,7 @@ function LoginForm() {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Name"
+          placeholder="User Name"
         />
         <br />
         <input
@@ -51,8 +51,10 @@ function LoginForm() {
           placeholder="Password"
         />
         <br />
-        <button onClick={handleLogin}>Log in</button>
-        <button onClick={() => navigate("/")}>Back</button>
+        <div class="buttons">
+          <button onClick={handleLogin}>Log in</button>
+          <button onClick={() => navigate("/")}>Back</button>
+        </div> 
       </div>
       <div class="right-content">
         <img src={Rope} alt="Rope image" className="image1" />

@@ -159,7 +159,7 @@ const HangmanGameLogic = () => {
               ? "Keep Trying"
               : gameStatus === "won"
               ? "You Won!"
-              : `Game Over — the word was ${word}`}
+              : `Game Over --   The word was ${word}`}
           </p>
           <p className="wrongletters">
             Wrong Letters: {wrongLetters.join(", ")}
@@ -182,7 +182,11 @@ const HangmanGameLogic = () => {
           </div>
         </div>
 
-        <div className="game-right hangman-images">
+        <div
+  className={`game-right hangman-images ${
+    gameStatus === "lost" ? "swing-animation" : ""
+  }`}
+>
           {hangmanImages.map((img, index) => (
             <img
               key={index}
