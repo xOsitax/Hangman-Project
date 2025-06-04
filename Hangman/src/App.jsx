@@ -8,7 +8,7 @@ import "./index.css";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/Hangman-Project">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<RegisterForm />} />
